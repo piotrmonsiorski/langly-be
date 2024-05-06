@@ -3,7 +3,9 @@ import { Request, Response } from 'express';
 import { WordSchema } from '../../schemas';
 
 const wordsGet = async (req: Request, res: Response) => {
-  const category = req.body.category;
+  const category = req.params.category;
+
+  console.log('category: ', category);
 
   try {
     const words = await WordSchema.find({ category });

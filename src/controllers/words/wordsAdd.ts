@@ -6,11 +6,7 @@ import { WordSchema } from '../../schemas';
 const wordsAdd = async (req: Request, res: Response) => {
   const newWord: WordModel = req.body.word;
 
-  console.log('newWord: ', newWord);
-
   try {
-    const word: WordModel = newWord;
-
     const _word = await WordSchema.find({
       value_en: newWord.value_en,
       type: newWord.type,
@@ -18,12 +14,12 @@ const wordsAdd = async (req: Request, res: Response) => {
     });
 
     if (_word.length) {
-      res.status(409).json({
+      return res.status(409).json({
         message: 'word already exists',
       });
     }
 
-    await WordSchema.create(word);
+    await WordSchema.create(newWord);
 
     res.status(200).json({
       message: 'word added successfully',

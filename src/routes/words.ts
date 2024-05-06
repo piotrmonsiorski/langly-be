@@ -5,7 +5,7 @@ import wordsAdd from '../controllers/words/wordsAdd';
 
 const router = express.Router();
 
-router.get('/', wordsGet);
+router.get('/:category', wordsGet);
 router.post('/', wordsAdd);
 
 export default router;

@@ -8,50 +8,30 @@ export type WordType =
 
 export type WordDifficulty = 0 | 1 | 2 | 3;
 
-interface GenericWord {
+export type WordValue = Partial<{
+  word: string;
+  singular: string;
+  plural: string;
+  male: string;
+  female: string;
+  infinitive: string;
+  singular_first: string;
+  singular_second: string;
+  singular_third: string;
+  plural_first: string;
+  plural_second: string;
+  plural_third: string;
+}>;
+
+export type Word = {
   type: WordType;
   value_en: string;
+  value: WordValue;
   language: Language;
   imageSrc?: string;
   difficulty: WordDifficulty;
   category: string;
-}
-
-interface WordSimple extends GenericWord {
-  type: 'word';
-  value: string;
-}
-
-interface WordPlural extends GenericWord {
-  type: 'adj';
-  value: {
-    singular: string;
-    plural: string;
-  };
-}
-
-interface WordAdjective extends GenericWord {
-  type: 'adj';
-  value: {
-    male: string;
-    female: string;
-  };
-}
-
-interface WordVerb extends GenericWord {
-  type: 'verb';
-  value: {
-    infinitive: string;
-    singular_first: string;
-    singular_second: string;
-    singular_third: string;
-    plural_first: string;
-    plural_second: string;
-    plural_third: string;
-  };
-}
-
-export type Word = WordSimple | WordPlural | WordAdjective | WordVerb;
+};
 
 export type WordCategory = {
   id: string;
