@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import { WordSchema } from '../../schemas';
 
-const wordsRemove = async (req: Request, res: Response) => {
+const wordsRemoveAll = async (req: Request, res: Response) => {
   try {
     await WordSchema.deleteMany({});
 
@@ -14,4 +14,4 @@ const wordsRemove = async (req: Request, res: Response) => {
   }
 };
 
-export default wordsRemove;
+export default wordsRemoveAll;
